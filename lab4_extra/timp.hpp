@@ -10,14 +10,18 @@ private:
 public:
     Timp(int s = 0, int m = 0, int h = 0);
     Timp(const Timp &t);
-    Timp(Timp &&t);
+    // Timp(Timp &&t);
     ~Timp();
 
-    Timp operator+(const Timp &t);
-    bool operator<(const Timp &t);
+    // void citire();
+    Timp operator+(const Timp &t) const;
+    bool operator<(const Timp &t) const;
+    bool operator>(const Timp &t) const;
     Timp &operator++();
     Timp operator++(int);
-    void afisare();
+    // void afisare();
+    friend std::ostream &operator<<(std::ostream &stream, const Timp &t);
+    friend std::istream &operator>>(std::istream &input, Timp &t);
 };
 
 #endif

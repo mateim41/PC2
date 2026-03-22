@@ -3,6 +3,8 @@
 #include "complex.hpp"
 #include "templateFct.hpp"
 #include "inventar.hpp"
+#include "timp.hpp"
+#include "pbFiltrare.hpp"
 
 void fractie_main()
 {
@@ -50,11 +52,46 @@ void inventar_main()
     (I - I2).afisare();
 }
 
+void Filtrare()
+{
+    int *v;
+    int n;
+    std::cout << "Nr elem: ";
+    std::cin >> n;
+    v = new int[n];
+    for (int i = 0; i < n; i++)
+        std::cin >> v[i];
+
+    int m = 0;
+    int *arr = ExtrageMaiMari<int>(v, n, 2, m);
+    for (int i = 0; i < m; i++)
+        std::cout << arr[i] << " ";
+    std::cout << std::endl;
+
+    int nr;
+    std::cout << "Nr elem vector timp: ";
+    std::cin >> nr;
+    Timp *t = new Timp[nr];
+    for (int i = 0; i < nr; i++)
+        std::cin >> t[i];
+
+    int nrNou = 0;
+    Timp *t2 = ExtrageMaiMari<Timp>(t, nr, Timp(10, 15, 8), nrNou);
+    for (int i = 0; i < nrNou; i++)
+        std::cout << t2[i];
+
+    delete[] v;
+    delete[] arr;
+    delete[] t;
+    delete[] t2;
+}
+
 int main()
 {
     // fractie_main();
     // pb2_templateFct();
-    inventar_main();
+    // inventar_main();
+    Filtrare();
 
     return EXIT_SUCCESS;
 }
