@@ -27,14 +27,15 @@ void pb3main()
     c1->AfisareDepartamente();
 
     delete c1;
-    //inca pot accesa arrayDepartamente ???? why
+    c1 = nullptr;
+    // inca pot accesa arrayDepartamente ???? why
     std::cout << (c1->arrayDepartamente[0] == d1);
 
     delete a1;
-     std::cout << (c1->arrayDepartamente[0] == d1);
+    std::cout << (c1->arrayDepartamente[0] == d1);
     a1 = 0;
     delete a2;
-     std::cout << (c1->arrayDepartamente[0] == d1);
+    std::cout << (c1->arrayDepartamente[0] == d1);
     a2 = 0;
     delete d1;
     d1 = 0;
@@ -44,14 +45,22 @@ void pb3main()
 
 void pb4main()
 {
-    
+    ComponenteElectrice comp(5);
+    std::cin >> comp;
+
+    Autoturism *a1 = new Autoturism(1600, 6.2);
+    std::cin >> *a1;
+    a1->addComponenteElectrice(&comp);
+    std::cout << *a1;
+
+    std::cout << comp;
 }
 
 int main()
 {
     // pb12main();
     // pb3main();
-
+    pb4main();
 
     return EXIT_SUCCESS;
 }
