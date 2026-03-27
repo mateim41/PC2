@@ -6,7 +6,7 @@
 #include "carte.hpp"
 #include "autor.hpp"
 
-int main()
+void pb6_extra()
 {
     Film f1;
     Film f2("Dune", 3, 4.83f);
@@ -45,10 +45,15 @@ int main()
     for (std::vector<Film>::iterator i = array_filme.begin(); i != array_filme.end(); i++)
         std::cout << *i;
     std::cout << std::endl;
-    
+
     std::sort(array_filme.begin(), array_filme.end(), Film::compare);
     for (std::vector<Film>::iterator i = array_filme.begin(); i != array_filme.end(); i++)
         std::cout << *i;
+}
+
+int main()
+{
+    pb6_extra();
 
     return EXIT_SUCCESS;
 }
