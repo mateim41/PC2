@@ -6,11 +6,10 @@
 // compozitie
 void pb1main()
 {
-	SmartPhone* t = new SmartPhone("Oppo", 5000);
+	SmartPhone *t = new SmartPhone("Oppo", 5000);
 	std::cout << *t;
-	std::string::iterator iterator_sir;
 	std::string modelTelefon = model_tel(*t);
-	for (iterator_sir = modelTelefon.begin(); iterator_sir != modelTelefon.end(); iterator_sir++)
+	for (std::string::iterator iterator_sir = modelTelefon.begin(); iterator_sir != modelTelefon.end(); iterator_sir++)
 		std::cout << *iterator_sir << " ";
 	std::cout << std::endl;
 
@@ -20,12 +19,12 @@ void pb1main()
 // exemplu agregare
 void pb2main()
 {
-	Jucator* j1 = new Jucator("Alex", 1.25);
-	Jucator* j2 = new Jucator("Denis", 0.75);
-	Jucator* j3 = new Jucator("Ionut", 2.789);
+	Jucator *j1 = new Jucator("Alex", 1.25);
+	Jucator *j2 = new Jucator("Denis", 0.75);
+	Jucator *j3 = new Jucator("Ionut", 2.789);
 	std::cout << Jucator::nb_players << std::endl;
 
-	Echipa* e = new Echipa("TUIASI Football Team", Jucator::nb_players);
+	Echipa *e = new Echipa("TUIASI Football Team", Jucator::nb_players);
 	e->adaugaJucator(j1, 0);
 	e->adaugaJucator(j2, 1);
 	e->adaugaJucator(j3, 2);
@@ -42,7 +41,7 @@ void pb2main()
 
 int main()
 {
-	//pb1main();
+	// pb1main();
 	pb2main();
 
 	return EXIT_SUCCESS;
