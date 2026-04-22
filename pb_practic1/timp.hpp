@@ -29,6 +29,8 @@ public:
     Timp operator-(const Timp &t2);
     Timp operator-(int x); // scad un nr de secunde;
     friend Timp operator-(int x, const Timp &t1);
+    Timp &operator--();
+    Timp operator--(int);
 };
 
 #endif

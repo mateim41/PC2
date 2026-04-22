@@ -52,5 +52,37 @@ bool Timp::operator<(const Timp &t1) const
 {
     int a = this->ore * 3600 + this->minute * 60 + this->secunde;
     int b = t1.ore * 3600 + t1.minute * 60 + t1.secunde;
-    
+    return a < b; //? true : false
+}
+
+//++ pre-fixat
+Timp &Timp::operator++()
+{
+    this->secunde++;
+    this->normalizeaza();
+    return *this;
+}
+
+//++ post-fixat
+Timp Timp::operator++(int)
+{
+    Timp temp(*this);
+    this->secunde++;
+    this->normalizeaza();
+    return temp;
+}
+
+//-- pre-fixat
+Timp &Timp::operator--()
+{
+    this->secunde--;
+    return *this;
+}
+
+//-- post-fixat
+Timp Timp::operator--(int)
+{
+    Timp temp(*this);
+    this->secunde--;
+    return temp;
 }
