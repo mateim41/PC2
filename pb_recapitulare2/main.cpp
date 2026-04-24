@@ -73,6 +73,14 @@ int main()
         std::cout << "\n";
     }
     std::cout << "\n";
-
+    /*
+        std::string a("Matei");
+        std::string b("Daniel");
+        bool r = a < b;
+        int r1 = a > b;
+        std::cout << r << " " << r1 << "\n";
+        daca r1 = 0 => a se afla inaintea lui b in alfabet
+        daca f1 = 1 => a se afla in alfabet dupa b (compar litera cu litera);
+    */
     return EXIT_SUCCESS;
 }
