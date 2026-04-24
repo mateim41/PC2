@@ -69,9 +69,18 @@ int main()
     }
     std::cout << "\n";
 
+    Triunghi *fig1 = dynamic_cast<Triunghi *>(f1);
+    if (fig1 != nullptr)
+        std::cout << fig1->semiperimetru() << "\n";
+    
     delete f1;
     delete f2;
     delete f3;
     // delete f4;
+
     return EXIT_SUCCESS;
 }
+// std::vector<Animal> v[10];
+// e un array de 10 elemente de vector de Animale
+// v[0] este un vector<Animal>
+// v[1] este un vector<Animal>
