@@ -69,10 +69,22 @@ int main()
     }
     std::cout << "\n";
 
-    Triunghi *fig1 = dynamic_cast<Triunghi *>(f1);
-    if (fig1 != nullptr)
-        std::cout << fig1->semiperimetru() << "\n";
-    
+    // for (const auto& i : fig)
+    // {
+    //     Triunghi *figura = dynamic_cast<Triunghi *>(i);
+    //     if (figura != nullptr)
+    //         std::cout << figura->semiperimetru() << "\n";
+    // }
+    for (int i = 0; i < fig.size(); i++)
+    {
+        Triunghi *figura = dynamic_cast<Triunghi *>(fig[i]);
+        if (figura != nullptr)
+        {
+            figura->afisare();
+            std::cout << figura->semiperimetru() << "\n";
+        }
+    }
+
     delete f1;
     delete f2;
     delete f3;
