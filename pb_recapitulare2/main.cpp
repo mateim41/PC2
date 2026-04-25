@@ -114,25 +114,61 @@ void pb_robot()
     robotiA.push_back(RobotAsamblare("robotA1", 2015, 52.25, 100, 16));
     robotiA.push_back(RobotAsamblare("robotA2", 2014, 60.50, 80, 24));
     robotiA.push_back(RobotAsamblare("robotA3", 2020, 75, 120, 10));
-
     int productieZilnica = 0;
     for (auto i = robotiA.begin(); i != robotiA.end(); i++)
         productieZilnica += (*i).calculeazaProductieZilnica();
     std::cout << "Productia zilnica a fabricii: " << productieZilnica << "\n";
-
     for (auto &i : robotiA)
     {
         i.afisare();
         std::cout << "\n";
     }
     std::cout << "\n";
-
     std::sort(robotiA.begin(), robotiA.end(), comparRobotAsamblare);
     for (std::vector<RobotAsamblare>::iterator i = robotiA.begin(); i != robotiA.end(); i++)
     {
         (*i).afisare();
         std::cout << "\n";
     }
+    std::cout << "\n";
+
+    std::vector<std::unique_ptr<Robot>> roboti;
+    roboti.push_back(std::make_unique<Robot>("Robot1", 2010));
+    roboti.push_back(std::make_unique<RobotIndustrial>("Robot2", 2016, 57.25));
+    roboti.push_back(std::make_unique<RobotAsamblare>("Robot3", 2020, 60.50, 100, 20));
+    roboti.push_back(std::make_unique<RobotIndustrial>("Robot4", 2021, 25.5));
+    for (auto i = roboti.begin(); i != roboti.end(); i++)
+    {
+        (*i)->afisare();
+        std::cout << "\n";
+    }
+    std::cout << "\n";
+
+    std::vector<Robot *> vRoboti;
+    Robot *robot1 = new Robot("Robot1", 2010);
+    Robot *robot2 = new RobotIndustrial("Robot2", 2016, 57.25);
+    Robot *robot3 = new RobotAsamblare("Robot3", 2020, 60.50, 100, 20);
+    Robot *robot4 = new RobotIndustrial("Robot4", 2021, 25.5);
+    vRoboti.push_back(robot1);
+    vRoboti.push_back(robot2);
+    vRoboti.push_back(robot3);
+    vRoboti.push_back(robot4);
+    RobotAsamblare *robot_cautat; // caut robotAsamblare pentru a calcula productia anuala
+                                  // presupunem ca anul are 365 de zile
+    int productieAnuala = 0;
+    for (int i = 0; i < vRoboti.size(); i++)
+    {
+        robot_cautat = dynamic_cast<RobotAsamblare *>(vRoboti[i]);
+        if (robot_cautat != nullptr)
+        {
+            productieAnuala += robot_cautat->calculeazaProductieZilnica() * 365;
+        }
+    }
+    std::cout << "Productia anuala a robotilor de asamblare este: " << productieAnuala << "\n";
+    delete robot1;
+    delete robot2;
+    delete robot3;
+    delete robot4;
 }
 
 int main()
