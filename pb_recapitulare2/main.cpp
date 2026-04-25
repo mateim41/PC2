@@ -5,8 +5,9 @@
 #include "laptop.hpp"
 #include "dispozitiv.hpp"
 #include "laptopgaming.hpp"
+#include "robot.hpp"
 
-int main()
+void pb_dispozitiv()
 {
     Dispozitiv d1;
     Dispozitiv d2("Samsung", 2026);
@@ -82,5 +83,62 @@ int main()
         daca r1 = 0 => a se afla inaintea lui b in alfabet
         daca f1 = 1 => a se afla in alfabet dupa b (compar litera cu litera);
     */
+}
+
+// in caz ca te uiti la pb_robot
+// mi o venit mie in cap sa fac anumiti constructori(copiere, mutare), destructori
+// si o trebuit sa declar ca default o gramade de chestii, printre care si
+// operator= de copiere si de mutare
+// de aceeea codul e foarte intortocheat
+
+void pb_robot()
+{
+    Robot r1;
+    Robot r2("robot1", 2013);
+    std::cout << r1 << r2;
+
+    std::cout << "Nr roboti industriali: " << RobotIndustrial::getNrRobotiIndustriali() << "\n\n";
+    RobotIndustrial ri1("robot_industrial1", 2020, 50);
+    RobotIndustrial *ri2 = new RobotIndustrial(ri1);
+    ri1.afisare();
+    ri2->afisare();
+    std::cout << "Nr roboti industriali: " << RobotIndustrial::getNrRobotiIndustriali() << "\n";
+    if (ri1 > (*ri2))
+        std::cout << "Primul robot poate sa care mai mult decat al doilea\n";
+    else
+        std::cout << "Al doilea robot poate sa care mai mult decat al doilea\n";
+    // nu mai supraincarc operatorul > si ==
+    delete ri2;
+    std::cout << "Nr roboti industriali: " << RobotIndustrial::getNrRobotiIndustriali() << "\n\n\n";
+
+    std::vector<RobotAsamblare> robotiA;
+    robotiA.push_back(RobotAsamblare("robotA1", 2015, 52.25, 100, 16));
+    robotiA.push_back(RobotAsamblare("robotA2", 2014, 60.50, 80, 24));
+    robotiA.push_back(RobotAsamblare("robotA3", 2020, 75, 120, 10));
+
+    int productieZilnica = 0;
+    for (auto i = robotiA.begin(); i != robotiA.end(); i++)
+        productieZilnica += (*i).calculeazaProductieZilnica();
+    std::cout << "Productia zilnica a fabricii: " << productieZilnica << "\n";
+
+    for (auto &i : robotiA)
+    {
+        i.afisare();
+        std::cout << "\n";
+    }
+    std::cout << "\n";
+
+    std::sort(robotiA.begin(), robotiA.end(), comparRobotAsamblare);
+    for (std::vector<RobotAsamblare>::iterator i = robotiA.begin(); i != robotiA.end(); i++)
+    {
+        (*i).afisare();
+        std::cout << "\n";
+    }
+}
+
+int main()
+{
+    pb_robot();
+
     return EXIT_SUCCESS;
 }
