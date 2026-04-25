@@ -6,6 +6,11 @@
 #include "dispozitiv.hpp"
 #include "laptopgaming.hpp"
 #include "robot.hpp"
+// in caz ca te uiti la pb_robot
+// mi o venit mie in cap sa fac anumiti constructori(copiere, mutare), destructori
+// si o trebuit sa declar ca default o gramade de chestii, printre care si
+// operator= de copiere si de mutare
+// de aceeea codul e foarte intortocheat
 
 void pb_dispozitiv()
 {
@@ -84,12 +89,6 @@ void pb_dispozitiv()
         daca f1 = 1 => a se afla in alfabet dupa b (compar litera cu litera);
     */
 }
-
-// in caz ca te uiti la pb_robot
-// mi o venit mie in cap sa fac anumiti constructori(copiere, mutare), destructori
-// si o trebuit sa declar ca default o gramade de chestii, printre care si
-// operator= de copiere si de mutare
-// de aceeea codul e foarte intortocheat
 
 void pb_robot()
 {
