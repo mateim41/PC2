@@ -6,6 +6,7 @@
 #include "dispozitiv.hpp"
 #include "laptopgaming.hpp"
 #include "robot.hpp"
+#include "produs.hpp"
 // in caz ca te uiti la pb_robot (robot.hpp, robot.cpp)
 // mi o venit mie in cap sa fac anumiti constructori(copiere, mutare), destructori
 // si o trebuit sa declar ca default o gramade de chestii, printre care si
@@ -171,9 +172,74 @@ void pb_robot()
     delete robot4;
 }
 
+void pb_produs()
+{
+    Produs p1;
+    Produs p2("Apa Dorna", 2010);
+    p1.afisare();
+    p2.afisare();
+    std::cout << "\n";
+
+    Electrocasnic e1;
+    Electrocasnic e2("Frigider Arctic", 2020, 9.8);
+    e1.afisare();
+    e2.afisare();
+    if (e1 > e2)
+        std::cout << "Primul electrocasnic este mai greu decat al doilea\n\n";
+    else
+        std::cout << "Al doilea electrocasnic este mai greu decat primul\n\n";
+    Electrocasnic e3(e2);
+    e3.afisare();
+    std::cout << "\n";
+
+    std::vector<Televizor> tv;
+    tv.push_back(Televizor("Samsung", 2019, 3.2, 108, 23.14));
+    tv.push_back(Televizor("LG", 2020, 4.2, 72, 25.57));
+    tv.push_back(Televizor("Hisense", 2025, 3.5, 108, 22.10));
+    double valTotalaTV = 0;
+    for (auto &i : tv)
+    {
+        valTotalaTV += i.valEstimata();
+    }
+    std::cout << "Valoare totala: " << valTotalaTV << "lei\n\n";
+    // sortam elementele cresc dupa pretPerInch
+    std::sort(tv.begin(), tv.end());
+    for (int i = 0; i < tv.size(); i++)
+    {
+        tv[i].afisare();
+        std::cout << "\n";
+    }
+    std::cout << "\n";
+    // sortam elementele descresc dupa valEstimata
+    std::sort(tv.begin(), tv.end(), comparTV);
+    for (std::vector<Televizor>::iterator i = tv.begin(); i != tv.end(); i++)
+    {
+        (*i).afisare();
+        std::cout << "\n";
+    }
+    std::cout << "\n";
+    // in loc de vector<Produs*> fac vector<std::unique_ptr<Produs>> pt a exemplifica si utilizarea
+    // unui smart pointer
+    // astfel ma asigur ca si dealocarea memoriei se face corect, nefiind nevoie din partea
+    // mea sa mai apelez delete
+    // daca nu trebuia sa declar separat obiecte de tip Produs* = new Produs/Electrocasnic/Televizor
+    // si sa fac delete la finalul programului
+
+    std::vector<std::unique_ptr<Produs>> produse;
+    produse.push_back(std::make_unique<Electrocasnic>("Aragaz Becko", 2015, 14.75));
+    produse.push_back(std::make_unique<Televizor>("Samsung", 2025, 4.58, 108, 20.77));
+    produse.push_back(std::make_unique<Produs>("Asus", 2026));
+    for (auto i = produse.begin(); i != produse.end(); i++)
+    {
+        (*i)->afisare();
+        std::cout << "\n";
+    }
+}
+
 int main()
 {
-    pb_robot();
+    // pb_robot();
+    pb_produs();
 
     return EXIT_SUCCESS;
 }
