@@ -1,0 +1,11 @@
+x = int(input("x = "))
+y = int(input("y = "))
+
+print(x+y)
+print(x-y)
+print(x/y)
+print(x//y)
+print(x%y)
+print(divmod(x,y))
+print(x**y)
+# print(2**1000)
