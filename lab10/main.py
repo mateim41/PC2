@@ -1,3 +1,4 @@
+import statistics as stats
 # nume = "Matei"
 # varsta = 20
 # an_curent = 2026
@@ -74,3 +75,84 @@
 # vocale = {"a", "e", "i", "o", "u"}
 # litere = set("programare")
 # print(litere & vocale, litere - vocale, sep = "\n")
+
+
+
+# for i in range(1,11):
+#     print(f"7 x {i} = {7*i}")
+# preturi = [10.5, 20.0, 33.7, 5.5, 15.0]
+# for i, x in enumerate(preturi):
+#     print(f"Produsul {i}: {x} lei")
+
+
+
+# def patrat(x):
+#     return x * x
+# while True:
+#     i = int(input())
+#     if i != 0:
+#         print(patrat(i))
+#     else:
+#         break
+# n = 29
+# for d in range(2,n//2+1):
+#     if n%d==0:
+#         print("n nu este prim")
+#         break
+# else:
+#     print("n este prim") # se executa doar daca nu se intalneste break
+
+
+
+# numere = [10, 20, 30, 40, 50]
+# p, *r, u = numere
+# print(p, r, u)
+
+
+
+# c = input()
+# vocale="AEIOUaeiou"
+# if c in vocale:
+#     print(f"Caracterul {c} este vocala")
+# else:
+#     print(f"Caracterul {c} este consoana")
+
+
+
+# print('-'*10)
+# for i in range(0,3):
+#     if i==1:
+#         print(f"|{'Salut!':^8}|")
+#     else:
+#         print(f"{'|':<9}|")
+# print('-'*10)
+# x = list("0"*100)
+
+
+
+# a = [1, 2, 3]
+# b = a
+# b[0] = 99
+# print(a,end="\n\n")
+# #
+# b = a.copy()
+# b[0] = 101
+# print(a,b,sep="\n")
+
+
+
+# def saluta(nume, salut="Salut"):
+#     print(f"{salut}, {nume}!")
+# saluta("Ana","Buna ziua")
+# #
+# def statistici(numere):
+#     return min(numere), max(numere), stats.mean(numere)
+# l = [4, 8, 15, 16, 23, 42]
+# mi, ma, med = statistici(l)
+# print(mi, ma, med)
+# #
+# def arie_dreptunghi(latime = 1, lungime = 1):
+#     return latime * lungime
+# print(arie_dreptunghi())
+# print(arie_dreptunghi(lungime = 3.5))
+# print(arie_dreptunghi(lungime = 3.25, latime = 2.69))
